@@ -13,7 +13,7 @@ app.listen(port, console.log(`Listening on port: ${port}`))
 app.get(
   '/pign',
   (request, response, next) => {
-    console.log('ping pong via git hub')
+    console.log('ping pong')
     return response.send('pong')
   }
 )
