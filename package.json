@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/AdrianusCornet/game-week-server/issues"
   },
-  "homepage": "https://github.com/AdrianusCornet/game-week-server#readme"
+  "homepage": "https://github.com/AdrianusCornet/game-week-server#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
