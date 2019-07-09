@@ -1,6 +1,7 @@
 const { Router } = require('express')
 
 const {toJWT} = require('./jwt')
+const {toData} = require('./jwt')
 const router = new Router()
 
 // endpoints
@@ -19,6 +20,21 @@ router.post('/login', (request, response, next) => {
         }
     }
 )  
+
+router.get('/secret-endpoint', (request, response) => {
+    const auth =request.headers.authorization && request.headers.authorization.split(' ')
+    if (auth && auth[0] === 'Bearer' && auth[1]) {
+        const data = toData(auth[1])
+        response.send({
+            message: 'Thank you for visiting the secret endpoint.',
+            data
+        })
+    } else {
+        response.status(401).send({
+            message: 'Please suply some valid credentials'
+        })
+    }
+})
 
 
 
