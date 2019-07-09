@@ -6,15 +6,13 @@ const User = db.define(
   {
     name: {
       type: Sequelize.STRING,
-      field: 'name'
+      field: 'name',
+      allowNull: false
     },
-    hashed_password: {
+    password: {
       type: Sequelize.STRING,
-      field: 'password'
-    },
-    players: {
-      type: Sequelize.INTEGER,
-      field: 'players'
+      field: 'password',
+      allowNull: false
     }
   },
 
