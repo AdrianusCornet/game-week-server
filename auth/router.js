@@ -52,10 +52,4 @@ router.post('/login', (request, response, next) => {
     }
 })
 
-router.get('/test', auth, (request, response, next) => {
-    return response.send({
-        message: `Hallo ${request.user.name}`
-    })
-})
-
 module.exports = router
