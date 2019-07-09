@@ -10,3 +10,5 @@ router.get('/player', (request, response, next) =>
     .then(plr => response.send(plr))
     .catch(error => next(error))
 );
+
+module.exports = router;
