@@ -1,9 +1,9 @@
 const { Router } = require('express')
-
-const { toJWT } = require('./jwt')
-const { toData } = require('./jwt')
 const bcrypt = require ('bcryptjs')
+
+const { toJWT, toData } = require('./jwt')
 const User = require('../user/model')
+
 const router = new Router()
 
 const noCred = "Missing credentials, please provide username and password"
@@ -12,8 +12,7 @@ const invalidCred = "Invalid credentials, please provide correct username and pa
 // endpoints
 
 router.post('/login', (request, response, next) => {
-    const username = request.body.name
-    const password = request.body.password
+    const { username, password } = request.body
 
     if (!username || !password) {
         return response.status(400).send({
@@ -27,9 +26,7 @@ router.post('/login', (request, response, next) => {
                 }
             })
             .then(entity => {
-                console.log('ENTETY ==>', entity)
                 if (!entity) {
-                    console.log('NO ENTERY')
                     response.status(400).send({
                         message: invalidCred
                     })
