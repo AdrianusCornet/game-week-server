@@ -13,7 +13,7 @@ const Player = db.define(
       field: 'room'
     },
     cards: {
-      type: Sequelize.STRING,
+      type: Sequelize.JSON,
       field: 'cards'
     }
   },

@@ -8,6 +8,7 @@ const JWT = require('./auth/jwt')
 const UsersRouter = require('./user/router');
 const PlayersRouter = require('./player/router');
 const RoomsRouter = require('./room/router');
+const CardsRouter = require('./cards/router')
 // init proceses
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(authRouter)
 app.use(UsersRouter);
 app.use(PlayersRouter);
 app.use(RoomsRouter);
+app.use(CardsRouter);
 
 
 app.listen(port, console.log(`Listening on port: ${port}`));
