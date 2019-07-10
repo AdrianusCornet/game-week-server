@@ -3,11 +3,11 @@ const Cards = require("./model");
 
 const router = new Router();
 
-// router.get("/card", (request, response, next) =>
-//   Cards.findAll()
-//     .then(cards => response.send(cards))
-//     .catch(error => next(error))
-// );
+router.get("/card", (request, response, next) =>
+  Cards.findAll()
+    .then(cards => response.send(cards))
+    .catch(error => next(error))
+);
 
 router.post("/card", (request, response, next) => {
   const values = ["2","3","4", "5", "6", "7", "8", "9", "10", "A", "J","Q","K" ];
