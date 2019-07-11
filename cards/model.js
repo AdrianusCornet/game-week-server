@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
+const Player = require('../player/model')
 
 const Cards = db.define(
     'card',
@@ -16,5 +17,7 @@ const Cards = db.define(
   
     { tableName: 'cards' }
   );
+
+
 
   module.exports = Cards

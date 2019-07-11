@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const Cards = require("./model");
-
+const Player = require('../player/model')
 const router = new Router();
 
 router.get("/card", (request, response, next) =>
@@ -29,10 +29,19 @@ router.post("/card", (request, response, next) => {
     }
   });
 
-  cards.forEach(card => {
-     Cards.create(card)
-  })
+  const randomCard = cards[Math.floor(Math.random() * cards.length)]
+  Cards.create(randomCard, {include: Player})
+  console.log("IS THIS MA RANDOM MCAD", randomCard)
+  
+  // cards.forEach(card => {
+  //    Cards.create(card)
+  // })
+  // .then(cards => {
+  //    console.log(cards[Math.floor(Math.random() * cards.length)]);
+  // })  
 });
+
+
 
 
 module.exports = router;
