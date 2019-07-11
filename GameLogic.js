@@ -43,7 +43,7 @@ function drawCard() {
 }
 
  function PlayerCards() {
-  return [(drawCard()), (drawCard())];
+  return [drawCard(), drawCard()];
 }
 
 function houseCards() {
