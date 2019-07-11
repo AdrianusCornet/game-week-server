@@ -7,22 +7,17 @@ const User = require('../user/model');
 const Player = db.define(
   'player',
   {
-    // user: {
-    //   type: Sequelize.STRING,
-    //   field: 'user'
-    // },
-    // room: {
-    //   type: Sequelize.STRING,
-    //   field: 'room'
-    // }
+    
   },
 
   { tableName: 'players' }
 );
 
-Player.belongsTo(Room);
-Room.hasMany(Player);
-Cards.belongsTo(Player);
-Player.hasMany(Cards);
+Player.belongsTo(User)
+User.hasMany(Player)
+Player.belongsTo(Room)
+Room.hasMany(Player)
+Cards.belongsTo(Player)
+Player.hasMany(Cards)
 
 module.exports = Player;

@@ -26,7 +26,6 @@ const port = process.env.PORT || 4000;
 
 app.use(jsonParser);
 app.use(authRouter);
-
 app.use(UsersRouter);
 app.use(PlayersRouter);
 app.use(RoomsRouter);

@@ -18,6 +18,9 @@ const Cards = db.define(
     { tableName: 'cards' }
   );
 
+  
+  
+  
 
 
   module.exports = Cards
