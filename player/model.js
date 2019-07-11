@@ -20,7 +20,7 @@ const Player = db.define(
   { tableName: 'players' }
 );
 
-// User.belongsTo(Player)
+Player.belongsTo(User)
 
 Player.belongsTo(Room)
 Room.hasMany(Player)

@@ -1,7 +1,8 @@
 const { Router } = require("express");
 const Player = require("./model");
-const playersCards = require('../GameLogic')
 const Room = require('../room/model')
+const User = require('../user/model')
+
 
 const router = new Router();
 
@@ -14,7 +15,7 @@ router.post('/player', (request, response, next) => {
 
 //Endpoint to get all players including the rooms number they are in 
 router.get("/player", (request, response, next) =>
-  Player.findAll({include: [Room]})
+  Player.findAll({include: [Room,, User],})
     .then(plr => response.send(plr))
     .catch(error => next(error))
 );
