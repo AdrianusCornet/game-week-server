@@ -13,6 +13,11 @@ router.get('/users', (request, response, next) =>
 );
 
 router.post('/users', (request, response, next) => {
+  if (!request.body.username || !request.body.password ) {
+    return response.status(400).send({
+      message: 'I cant read that'
+    })
+  }
   const user = {
     name: request.body.username,
     password: bcrypt.hashSync(request.body.password, 10)
