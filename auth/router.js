@@ -28,18 +28,21 @@ router.post('/login', (request, response, next) => {
             })
             .then(entity => {
                 if (!entity) {
-                    response.status(400).send({
+                    response.status(404).send({
                         message: invalidCred
                     })
                 }
                 else if (bcrypt.compareSync(password, entity.password)) {
                     response.send({
                         jwt: toJWT({ userId: entity.id }),
-                        user:{entity}
+                        user:{
+                            id: entity.id,
+                            name: entity.name
+                        }
                     })
                 }
                 else {
-                    response.status(400).send({
+                    response.status(404).send({
                         message: invalidCred
                     })
                 }
