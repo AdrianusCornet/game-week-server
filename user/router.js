@@ -11,7 +11,7 @@ router.get('/users', (request, response, next) =>
     .then(usr => response.send(usr))
     .catch(error => next(error))
 );
-
+// Create new user
 router.post('/users', (request, response, next) => {
   if (!request.body.username || !request.body.password ) {
     return response.status(400).send({
