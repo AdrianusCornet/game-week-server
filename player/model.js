@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
-const Cards = require('../cards/model')
-const Room = require('../room/model')
-const User = require('../user/model')
+const Cards = require('../cards/model');
+const Room = require('../room/model');
+const User = require('../user/model');
 
 const Player = db.define(
   'player',

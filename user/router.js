@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
 
 const User = require('./model');
 
@@ -16,15 +16,15 @@ router.post('/users', (request, response, next) => {
   const user = {
     name: request.body.username,
     password: bcrypt.hashSync(request.body.password, 10)
-  }
+  };
   User.create(user)
     .then(user => {
       response.status(201).json({
-        message: "A new user was added",
-        "new user": user
-      })
+        message: 'A new user was added',
+        'new user': user
+      });
     })
-    .catch(error => next(error))
-})
+    .catch(error => next(error));
+});
 
 module.exports = router;

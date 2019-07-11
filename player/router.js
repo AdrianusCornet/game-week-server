@@ -4,19 +4,20 @@ const Room = require('../room/model')
 const User = require('../user/model')
 const Cards = require('../cards/model')
 
-
+const playersCards = require('../GameLogic');
 const router = new Router();
 
-//endpoint to create a player 
+//endpoint to create a player
 router.post('/player', (request, response, next) => {
-  Player.create(request.body, {include: [Room]})
-  .then(player => response.status(200).send(player))
-  .catch(error => next(error))
-})
+  Player.create(request.body, { include: [Room] })
+    .then(player => response.status(200).send(player))
+    .catch(error => next(error));
+});
 
 //Endpoint to get all players including the rooms number they are in 
 router.get("/player", (request, response, next) =>
   Player.findAll({include: [User] [Cards]})
+
     .then(plr => response.send(plr))
     .catch(error => next(error))
 );
@@ -32,4 +33,3 @@ router.get('/player/:id', (request, response, next) => {
 
 
 module.exports = router;
-
