@@ -1,15 +1,28 @@
 const { Router } = require('express');
+
 const Player = require('./model');
 const Room = require('../room/model');
 const User = require('../user/model');
 const Cards = require('../cards/model');
+const auth = require('../auth')
 
 const playersCards = require('../GameLogic');
 const router = new Router();
 
 //endpoint to create a player
-router.post('/player', (request, response, next) => {
-  Player.create(request.body, { include: [Room] })
+router.post('/player', auth, (request, response, next) => {
+  if (!request.user.id || !request.body.room) {
+    // u ft up
+    return response.status(400).send({
+      message: 'i need more data'
+    })
+  } 
+  const player = {
+    userId: request.user.id,
+    roomId: request.body.room,
+  }
+  return Player
+    .create(player, { include: [Room] })
     .then(player => response.status(200).send(player))
     .catch(error => next(error));
 });
