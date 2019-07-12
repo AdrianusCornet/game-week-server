@@ -16,7 +16,7 @@ router.post('/player', auth, (request, response, next) => {
     return response.status(400).send({
       message: 'i need more data'
     })
-  } 
+  }
   const player = {
     userId: request.user.id,
     roomId: request.body.room,
@@ -28,19 +28,21 @@ router.post('/player', auth, (request, response, next) => {
 });
 
 //Endpoint to get all players including the rooms number they are in
-router.get('/player', (request, response, next) =>
-  Player.findAll({ include: [Cards] })
-
+router.get('/player', (request, response, next) => {
+  return Player
+    .findAll({ include: [Cards] })
     .then(plr => response.send(plr))
     .catch(error => next(error))
-);
+});
 
 //Endpoint to get a specific and the respective room the player is in
 router.get('/player/:id', (request, response, next) => {
   const id = request.params.id;
-  Player.findByPk(id, { include: [Cards] }).then(player => {
-    response.send(player);
-  });
+  return Player
+    .findByPk(id, { include: [Cards] })
+    .then(player => {
+      response.send(player);
+    });
 });
 
 module.exports = router;
