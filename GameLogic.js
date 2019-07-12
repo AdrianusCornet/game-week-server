@@ -1,6 +1,4 @@
-//create deck
-const suites = ["hearts", "spades", "clubs", "diamonds"]
-
+// create cards array
 const values = [
   "2",
   "3",
@@ -16,9 +14,6 @@ const values = [
   "Q",
   "K"
 ];
-
-
-
 const cards = values.map(value => {
   return { weight: assignWeight(value), value: value };
 
@@ -36,13 +31,11 @@ const cards = values.map(value => {
   }
 });
 
-console.log("LOGINING ", PlayerCards())
-
 function drawCard() {
   return cards[Math.floor(Math.random() * cards.length)];
 }
 
- function PlayerCards() {
+function PlayerCards() {
   return [drawCard(), drawCard()];
 }
 
@@ -59,4 +52,4 @@ function startGame2() {
 
 console.log("PlayersCards", PlayerCards());
 
-module.exports = PlayerCards
+module.exports = { PlayerCards, cards }
